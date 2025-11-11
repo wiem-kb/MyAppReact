@@ -4,8 +4,8 @@ FROM node:lts-alpine
 # Étape 2 : Définir le répertoire de travail
 WORKDIR /usr/src/app
 
-# Étape 3 : Copier les fichiers de gestion des dépendances
-COPY package*.json ./
+# Étape 3 : Copier SEULEMENT le package.json pour forcer une résolution propre dans le conteneur
+COPY package.json ./
 
 # Étape 4 : Installer les dépendances
 RUN npm install
