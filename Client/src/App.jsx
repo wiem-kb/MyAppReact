@@ -5,7 +5,7 @@ function App() {
 
   useEffect(() => {
     // Appel à l'API backend
-    fetch("http://localhost:5000/api/health")
+    fetch("http://localhost:9000/api/health")
       .then((response) => response.json())  // Réponse de l'API au format JSON
       .then((data) => setMessage(data.message))  // Mettre à jour l'état avec le message
       .catch((error) => console.error('Erreur:', error));  // Gestion des erreurs
