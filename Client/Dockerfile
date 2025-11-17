@@ -2,7 +2,7 @@
 FROM node:lts-alpine
 
 # Étape 2 : Définir le répertoire de travail
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Étape 3 : Copier SEULEMENT le package.json pour forcer une résolution propre dans le conteneur
 COPY package.json ./

@@ -1,0 +1,39 @@
+# version: '3.8'
+
+services:
+  # Service pour la base de données MongoDB
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    networks:
+      - mern-network
+
+  # Service pour le serveur backend (Express/Node)
+  server:
+    build: ./server
+    container_name: server
+    ports:
+      - "9000:9000"
+    networks:
+      - mern-network
+    depends_on:
+      - mongodb
+    environment:
+      # Le nom d'hôte 'mongodb' est résolu par Docker Compose
+      - MONGO_URI=mongodb://mongodb:27017/mydatabase
+
+  # Service pour le client frontend (React)
+  client:
+    build: ./client
+    container_name: client
+    ports:
+      - "3000:3000"
+    networks:
+      - mern-network
+    depends_on:
+      - server
+
+# Définition du réseau partagé
+networks:
+  mern-network:
+    driver: bridge

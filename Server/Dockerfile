@@ -2,7 +2,7 @@
 FROM node:lts-alpine
 
 # Étape 2 : Définir le répertoire de travail dans le conteneur
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Étape 3 : Copier les fichiers de gestion des dépendances
 COPY package*.json ./
